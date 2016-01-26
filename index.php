@@ -82,7 +82,26 @@
 		});
 	}
 	
-	ifr();
+	function check() {
+		
+		$.get('/check',function (status) {
+			if (status=='RUNNING') {
+				var url='<?php echo $config['status'];?>';
+				$.get(url,function(data) {
+					if (data=='0') {
+						ifr();
+					} else {
+						setTimeout(check,1000);
+					}
+				});
+				
+			} else {
+				setTimeout(check,1500);
+			}
+		});
+	}
+	
+	check();
 </script>
 
 </html>

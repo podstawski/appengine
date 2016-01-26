@@ -8,11 +8,15 @@ handlers:
 - url: /media
   static_dir: media
 
-- url: /.*
-  script: index.php
-  login: admin
-
 - url: /check
   script: check.php
+  login: admin
+
+- url: /status
+  script: status.php
+  login: admin
+
+- url: /.*
+  script: index.php
   login: admin
 
