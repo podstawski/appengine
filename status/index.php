@@ -7,6 +7,11 @@
     
     if ($uptime < $config['server_min_uptime']) die(0);
     
+
+    //$chromoting='';
+    //foreach (scandir('/tmp') AS $tmp) if (substr($tmp,0,10)=='chromoting') $chromoting=$tmp;
+    //if ($chromoting) die('0');
+
     
     $dir=$config['log_dir'];
     $min=$config['log_timeout'];
@@ -36,4 +41,4 @@
         }
     }
     
-    die('1');
+    die('-1');

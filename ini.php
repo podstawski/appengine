@@ -11,7 +11,10 @@
                'log_timeout'=>1800,
                'server_min_uptime'=>3600,
                'kameleon'=>[],
-               'kameleon_ftp_timeout'=>600
+               'kameleon_ftp_timeout'=>600,
+               'mail_sender'=>'Compute@webkameleon-developer-ae.appspotmail.com',
+               'mail_from'=>'editor@webkameleon.com',
+               'mail_to'=>'piotr@webkameleon.com',
     ];
     
     if (file_exists(__DIR__.'/local.php')) {

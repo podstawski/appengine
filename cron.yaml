@@ -2,4 +2,3 @@ cron:
 - description: check if you can stop
   url: /status
   schedule: every 45 minutes
-  
