@@ -8,9 +8,9 @@
                'iframe_src'=>'',
                'status'=>'http://status02.webkameleon.com',
                'log_dir'=>'/var/log/apache2',
-               'log_timeout'=>360,
-               'server_min_uptime'=>2000,
-               'kameleon'=>[['dsn'=>'pgsql:host=localhost;dbname=cmspremium','user'=>'cmsdecora','pass'=>'spierdalaj']],
+               'log_timeout'=>1800,
+               'server_min_uptime'=>3600,
+               'kameleon'=>[],
                'kameleon_ftp_timeout'=>600
     ];
     
