@@ -1,11 +1,14 @@
 <?php
+    
+    Header('Access-Control-Allow-Origin: *');
+
     $config = include __DIR__.'/../ini.php';
     
     $uptime=file_get_contents('/proc/uptime');
     $uptime=explode(' ',$uptime);
     $uptime=$uptime[0];
     
-    if ($uptime < $config['server_min_uptime']) die(0);
+    if ($uptime < $config['server_min_uptime']) die('0');
     
 
     //$chromoting='';
@@ -41,4 +44,4 @@
         }
     }
     
-    die('-1');
+    die('1');
