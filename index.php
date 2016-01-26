@@ -90,7 +90,7 @@
 				$.ajax({
 					url: url,
 					success: function(data) {
-						if (data=='0') {
+						if (data=='0' || data=='1') {
 							ifr();
 						} else {
 							setTimeout(check,1500);
