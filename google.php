@@ -39,7 +39,7 @@
 		$mail_options = [
                 "sender" => $config['mail_sender'],
                 "to" => $config['mail_to'],
-                "subject" => $subject.' '.$config['instance'][2],
+                "subject" => $subject.' '.$config['instance'][2].date(' y-m-d H:i'),
                 "textBody" => print_r($_SERVER,true),
                 "replyto" => $config['mail_from'],
                 "header" => ['Resent-From'=>$config['mail_from']]
