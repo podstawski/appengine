@@ -3,12 +3,17 @@
     Header('Access-Control-Allow-Origin: *');
 
     $config = include __DIR__.'/../ini.php';
+
+
+    $debug='';
     
     $uptime=file_get_contents('/proc/uptime');
     $uptime=explode(' ',$uptime);
     $uptime=$uptime[0];
-    
-    if ($uptime < $config['server_min_uptime']) die('0');
+
+
+    if (isset($_GET['debug'])) $debug='<br/>Uptime='.$uptime; 
+    if ($uptime < $config['server_min_uptime']) die('0'.$debug);
     
 
     //$chromoting='';
@@ -25,7 +30,8 @@
         $min=min($min,time()-filemtime("$dir/$log"));
         
     }
-    if ($min<$config['log_timeout']) die('0');
+    if (isset($_GET['debug'])) $debug='<br/>Logs='.$min; 
+    if ($min<$config['log_timeout']) die('0'.$debug);
     
     
     foreach ($config['kameleon'] AS $db) {
@@ -36,11 +42,12 @@
             foreach ($q AS $row);
             $lastftp=$row[0];
             
-            if (time()-$lastftp < $config['kameleon_ftp_timeout'] ) die('0');
+            if (isset($_GET['debug'])) $debug='<br/>Kameleon='.(time()-$lastftp); 
+            if (time()-$lastftp < $config['kameleon_ftp_timeout'] ) die('0'.$debug);
             
         } catch (Exception $e) {
             print_r($e);
-            die('0');
+            die('0'.$debug);
         }
     }
     
