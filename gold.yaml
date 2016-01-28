@@ -10,6 +10,7 @@ handlers:
 
 - url: /check
   script: check.php
+  login: required
 
 - url: /status
   script: status.php
@@ -17,4 +18,5 @@ handlers:
 
 - url: /.*
   script: index.php
+  login: required
 

@@ -5,14 +5,16 @@
 	require_once __DIR__.'/google.php';
 	$config = include __DIR__.'/ini.php';
 	
+	require_once 'google/appengine/api/users/User.php';
+	require_once 'google/appengine/api/users/UserService.php';
+	
+	$user=UserService::getCurrentUser();
+	$mail = $user?$user->getNickname():'';
+	$mail=explode('@',$mail);
+
 	
 	if (!$config['iframe_src']) {
-        require_once 'google/appengine/api/users/User.php';
-        require_once 'google/appengine/api/users/UserService.php';
 		
-		$user=UserService::getCurrentUser();
-		$mail = $user?$user->getNickname():'';
-		$mail=explode('@',$mail);
 		if ($mail[0]) $config['iframe_src']='http://'.$mail[0].'.webkameleon.com';
 	}
 	

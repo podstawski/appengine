@@ -62,10 +62,10 @@
         return $instance->status;
     }
     
-    function startInstance($service) {
+    function startInstance($service,$who='') {
         $config = include __DIR__.'/ini.php';
         $service->instances->start($config['instance'][0],$config['instance'][1],$config['instance'][2]);
-		sendmail('START',$config);
+		sendmail('START '.$start,$config);
 	}
     
     
