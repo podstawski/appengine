@@ -12,7 +12,7 @@
     $uptime=$uptime[0];
 
 
-    if (isset($_GET['debug'])) $debug='<br/>Uptime='.$uptime; 
+    if (isset($_GET['debug'])) $debug.='<br/>Uptime='.$uptime; 
     if ($uptime < $config['server_min_uptime']) die('0'.$debug);
     
 
@@ -30,7 +30,7 @@
         $min=min($min,time()-filemtime("$dir/$log"));
         
     }
-    if (isset($_GET['debug'])) $debug='<br/>Logs='.$min; 
+    if (isset($_GET['debug'])) $debug.='<br/>Logs='.$min; 
     if ($min<$config['log_timeout']) die('0'.$debug);
     
     
@@ -42,13 +42,14 @@
             foreach ($q AS $row);
             $lastftp=$row[0];
             
-            if (isset($_GET['debug'])) $debug='<br/>Kameleon='.(time()-$lastftp); 
+            if (isset($_GET['debug'])) $debug.='<br/>Kameleon='.(time()-$lastftp); 
             if (time()-$lastftp < $config['kameleon_ftp_timeout'] ) die('0'.$debug);
             
         } catch (Exception $e) {
             print_r($e);
+	    if (isset($_GET['debug'])) $debug.='<br/>Connection failed';
             die('0'.$debug);
         }
     }
     
-    die('1');
+    die('1'.$debug);
