@@ -12,6 +12,9 @@ handlers:
   script: check.php
   login: required
 
+- url: /startmebaby
+  script: check.php
+
 - url: /status
   script: status.php
   login: admin
